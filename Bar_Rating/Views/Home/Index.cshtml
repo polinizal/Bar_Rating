@@ -1,0 +1,31 @@
+﻿@using Bar_Rating.Data.Entities
+@using Microsoft.AspNetCore.Identity
+
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+</div>
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="text-center">
+        <h1 class="display-4">Admin</h1>
+        <p>Total Users: @UserManager.Users.Count()</p>
+        <p>Total Bars: @ViewBag.NumberOfBars </p>
+        <p>Total Ratings: @ViewBag.NumberOfRatings </p>
+        
+    </div>
+}
